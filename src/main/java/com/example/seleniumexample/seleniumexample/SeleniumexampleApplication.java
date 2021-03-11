@@ -26,7 +26,9 @@ public class SeleniumexampleApplication {
 
         SpringApplication.run(SeleniumexampleApplication.class, args);
 
-        System.out.println("This is Test JG");
+        System.out.println("Execution Started !!!");
+        System.out.println("BrowserStack Configuration Started");
+
         String AUTOMATE_USERNAME = "siddhesh29";
         String AUTOMATE_ACCESS_KEY = "yvgiuyRhsJEL1AUzeEbX";
         String URL = "https://" + AUTOMATE_USERNAME + ":" + AUTOMATE_ACCESS_KEY + "@hub-cloud.browserstack.com/wd/hub";
@@ -44,8 +46,9 @@ public class SeleniumexampleApplication {
         caps.setCapability("build", buildName);
         caps.setCapability("name", buildName); // CI/CD job name using BROWSERSTACK_BUILD_NAME env variable
 
-        WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
+        System.out.println("BrowserStack Configuration Completed");
 
+        WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
 
         System.setProperty("webdriver.chrome.driver","D:\\chromedriver_win32\\chromedriver.exe");
         //WebDriver driver = new ChromeDriver();
@@ -53,7 +56,7 @@ public class SeleniumexampleApplication {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         driver.get("http://www.flipkart.com/");
-        System.out.println("This is Test JG 1");
+        System.out.println("Opening webbrowser");
 
         //With Login
        /*
@@ -65,7 +68,8 @@ public class SeleniumexampleApplication {
         driver.findElement(By.className("_2doB4z")).click();
         driver.findElement(By.className("_3704LK")).sendKeys("iPhone 11");
         driver.findElement(By.className("L0Z3Pu")).click();
-
+       
+        System.out.println("Search iPhone11");
         Thread.sleep(10000);
         Select priceSelect = new Select(driver.findElement(By.className("_2YxCDZ")));
         priceSelect.selectByVisibleText("₹30000");
@@ -96,10 +100,15 @@ public class SeleniumexampleApplication {
 
         }
 
+        System.out.println("Filtering Completed!");
+
+        
         List<WebElement> productList = driver.findElements(By.className("_4rR01T"));
         List<WebElement> productLinkList = driver.findElements(By.className("_1fQZEK"));
         List<WebElement> priceList = driver.findElements(By.className("_30jeq3"));
         List<String> productDetailList = new ArrayList<>();
+
+        System.out.println("Printing Results on Console");
 
         for(int i=0;i<productList.size();i++) {
             productDetailList.add("Product Name: " + productList.get(i).getText() + " #### Product Link: "+ productLinkList.get(i).getAttribute("href") + " #### Price: " + priceList.get(i).getText());
@@ -109,7 +118,6 @@ public class SeleniumexampleApplication {
         }
 
        //driver.findElement(By.className("_3879cV")).click();
-        System.out.println("Post Apple filter JG");
 
 
         driver.close();
@@ -122,7 +130,7 @@ public class SeleniumexampleApplication {
             markTestStatus("failed","Unable to fetch the Product List",driver);
         }
 
-        System.out.println("This is JG test end");
+        System.out.println("Execution ended !!!");
     }
     public static void markTestStatus(String status, String reason, WebDriver driver) {
         JavascriptExecutor jse = (JavascriptExecutor)driver;
