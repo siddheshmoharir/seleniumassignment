@@ -126,11 +126,13 @@ public class SeleniumexampleApplication {
             markTestStatus("failed","Unable to fetch the Product List",driver);
         }
 
+        driver.quit();
         System.out.println("Execution ended !!!");
     }
     public static void markTestStatus(String status, String reason, WebDriver driver) {
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\": \""+status+"\", \"reason\": \""+reason+"\"}}");
     }
+    
 
 }
