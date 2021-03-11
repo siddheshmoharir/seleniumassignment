@@ -112,9 +112,9 @@ public class SeleniumexampleApplication {
             productDetailList.add("Product Name: " + productList.get(i).getText() + " #### Product Link: "+ productLinkList.get(i).getAttribute("href") + " #### Price: " + priceList.get(i).getText());
             System.out.println("Product Name: " + productList.get(i).getText() + " #### Product Link: "+ productLinkList.get(i).getAttribute("href") + " #### Price: " + priceList.get(i).getText());
             
-        /*    if(i < productList.size()-1) {
+            if(i < productList.size()-1) {
                     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", productList.get(i));
-                }*/
+                }
         }
             System.out.println(productDetailList);
 
