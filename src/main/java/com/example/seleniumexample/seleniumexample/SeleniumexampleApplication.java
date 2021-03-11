@@ -41,7 +41,7 @@ public class SeleniumexampleApplication {
         caps.setCapability("os", "Windows");
         caps.setCapability("name", "BStack-[Java] Sample Test"); // test name
         caps.setCapability("build", "BStack Build Number 1"); // CI/CD job or build name
-        capabilities.setCapability("build", buildName); // CI/CD job name using BROWSERSTACK_BUILD_NAME env variable
+        caps.setCapability("build", buildName); // CI/CD job name using BROWSERSTACK_BUILD_NAME env variable
 
         WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
 
