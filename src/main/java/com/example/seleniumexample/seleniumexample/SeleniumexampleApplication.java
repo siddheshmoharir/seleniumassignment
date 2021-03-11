@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.JavascriptExecutor;
 
 
 import java.awt.*;
@@ -106,19 +105,12 @@ public class SeleniumexampleApplication {
         List<WebElement> priceList = driver.findElements(By.className("_30jeq3"));
         List<String> productDetailList = new ArrayList<>();
 
-        int currentPixel = 0;
         
         System.out.println("Printing Results on Console");
 
         for(int i=0;i<productList.size();i++) {
             productDetailList.add("Product Name: " + productList.get(i).getText() + " #### Product Link: "+ productLinkList.get(i).getAttribute("href") + " #### Price: " + priceList.get(i).getText());
             System.out.println("Product Name: " + productList.get(i).getText() + " #### Product Link: "+ productLinkList.get(i).getAttribute("href") + " #### Price: " + priceList.get(i).getText());
-
-            if(currentPixel < document.body.scrollHeight)
-            {
-                ((JavascriptExecutor) driver).executeScript("window.scrollTo(currentPixel, currentPixel+50)");
-                currentPixel = currentPixel + 50;
-            }
         }
             System.out.println(productDetailList);
 
