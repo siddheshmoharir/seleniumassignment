@@ -31,7 +31,7 @@ public class SeleniumexampleApplication {
         String AUTOMATE_ACCESS_KEY = "yvgiuyRhsJEL1AUzeEbX";
         String URL = "https://" + AUTOMATE_USERNAME + ":" + AUTOMATE_ACCESS_KEY + "@hub-cloud.browserstack.com/wd/hub";
         String buildName = System.getenv("BROWSERSTACK_BUILD_NAME");
-
+        System.out.println("###### buildName is ########### " + buildName);
 
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("os_version", "7");
@@ -41,7 +41,7 @@ public class SeleniumexampleApplication {
         caps.setCapability("os", "Windows");
         caps.setCapability("name", "BStack-[Java] Sample Test"); // test name
         caps.setCapability("build", "BStack Build Number 1"); // CI/CD job or build name
-        caps.setCapability("build", buildName); // CI/CD job name using BROWSERSTACK_BUILD_NAME env variable
+        caps.setCapability("name", buildName); // CI/CD job name using BROWSERSTACK_BUILD_NAME env variable
 
         WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
 
