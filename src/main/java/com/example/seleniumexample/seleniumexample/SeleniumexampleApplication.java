@@ -80,11 +80,9 @@ public class SeleniumexampleApplication {
         System.out.println("Before Apple filter JG");
 
         List<WebElement> checkList = driver.findElements(By.className("_3879cV"));
-        System.out.println("Number of checkboxes are " + checkList.size());
 
         for(int i=0;i<checkList.size();i++)
         {
-            System.out.println("Value of divs is " + checkList.get(i).getText());
             if(checkList.get(i).getText().equals("APPLE"))
             {
                 checkList.get(i).click();
@@ -95,9 +93,7 @@ public class SeleniumexampleApplication {
                 checkList.get(i).click();
                 System.out.println("Inside Flipkart Assured !!!!!");
                 Thread.sleep(5000);
-
             }
-
         }
 
         System.out.println("Filtering Completed!");
